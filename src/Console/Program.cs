@@ -1,11 +1,11 @@
 ﻿using Console.Services.Initialization;
-using Console.Services.Sample;
+using Console.Services.SolScraper;
 using Console.Services.Utility;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-var host = Host.CreateDefaultBuilder()
+IHost host = Host.CreateDefaultBuilder()
     .ConfigureServices((context, services) =>
     {
         services.ConfigureServices();
@@ -15,8 +15,8 @@ var host = Host.CreateDefaultBuilder()
 
 Log.Logger.Information("Application starting");
 
-var startup = ActivatorUtilities.CreateInstance<Startup>(host.Services);
+Startup startup = ActivatorUtilities.CreateInstance<Startup>(host.Services);
 await startup.InitializeAsync();
 
-var svc = ActivatorUtilities.CreateInstance<GreetingService>(host.Services);
+ISolScraperProgram svc = ActivatorUtilities.CreateInstance<SolScraperProgram>(host.Services);
 svc.Run();
