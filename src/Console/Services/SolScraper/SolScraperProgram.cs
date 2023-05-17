@@ -32,7 +32,13 @@ internal class SolScraperProgram : ISolScraperProgram
     {
         foreach (string file in files)
         {
-            _reader.Read(file);
+            List<Application.Models.SolMember> solMembers = _reader.Read(file);
+
+            System.Console.WriteLine($"Read in file: {Path.GetFileName(file)}");
+            foreach (Application.Models.SolMember member in solMembers)
+            {
+                System.Console.WriteLine($"\t{member.Id} - {member.FirstName} {member.LastName}");
+            }
         }
     }
     #endregion
