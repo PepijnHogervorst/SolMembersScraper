@@ -94,6 +94,9 @@ internal class SolMembersXmlReader : ISolMembersXmlReader
         }
     }
 
+    /// <summary>
+    /// Use reflection to get properties of class (use order or found properties!)
+    /// </summary>
     private void DetermineMemberPropertyOrder()
     {
         _memberProperties = typeof(SolMember).GetProperties(BindingFlags.Public | BindingFlags.Instance);

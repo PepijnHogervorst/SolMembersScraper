@@ -1,6 +1,7 @@
 ﻿namespace Application.Models;
 /// <summary>
 /// Data model that holds member information
+/// Make sure to keep properties in same order as xml table columns!
 /// </summary>
 public class SolMember
 {
