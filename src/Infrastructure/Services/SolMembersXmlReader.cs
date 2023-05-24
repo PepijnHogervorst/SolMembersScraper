@@ -13,17 +13,6 @@ internal class SolMembersXmlReader : ISolMembersXmlReader
     #endregion
 
 
-    #region Public properties
-    #endregion
-
-
-    #region Constructor
-    public SolMembersXmlReader()
-    {
-    }
-    #endregion
-
-
     #region Public methods
     public List<SolMember> Read(string path)
     {

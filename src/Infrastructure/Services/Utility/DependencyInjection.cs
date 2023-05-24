@@ -1,5 +1,7 @@
 ﻿using Application.Services;
+using Application.Stores;
 using Domain.Common.Interfaces;
+using Infrastructure.Stores;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Services.Utility;
@@ -10,6 +12,8 @@ public static class DependencyInjection
     {
         services.AddUtility();
         services.AddXmlServices();
+        services.AddServices();
+        services.AddStores();
         return services;
     }
 
@@ -24,6 +28,20 @@ public static class DependencyInjection
     {
         services.AddSingleton<IXmlFileFinder, XmlFileFinder>();
         services.AddSingleton<ISolMembersXmlReader, SolMembersXmlReader>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddServices(this IServiceCollection services)
+    {
+        services.AddSingleton<ISolMembersBeautifier, SolMembersBeautifier>();
+
+        return services;
+    }
+
+    private static IServiceCollection AddStores(this IServiceCollection services)
+    {
+        services.AddSingleton<IAreaCodesStore, AreaCodesNetherlands>();
 
         return services;
     }
